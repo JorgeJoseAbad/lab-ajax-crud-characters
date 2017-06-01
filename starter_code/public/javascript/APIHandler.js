@@ -1,3 +1,4 @@
+/*jshint esversion:6 */
 class APIHandler {
   constructor (baseUrl) {
     this.BASE_URL = baseUrl;
@@ -70,7 +71,31 @@ class APIHandler {
 
   }
 
-  updateOneRegister () {
+  updateOneRegister (id) {
+    event.preventDefault();
+
+    const characterUptd = {
+
+      name:        $("input[name*='name-up']").val(),
+      occupation:  $("input[name*='occupation-up']").val(),
+      weapon:      $("input[name*='weapon-up']").val(),
+      debt:        $("input[type*='checkbox']").val(),
+    };
+
+
+    $.ajax({
+      // Notice that we are using PATCH. You could also use PUT.
+    type: 'PATCH',
+    url: `https://ih-api.herokuapp.com/characters/`+id,
+    data: characterUptd,
+    success: (patchResponse) => {
+      console.log('Update SUCCESS!');
+      console.log(patchResponse);
+    },
+    error: function (err) {
+      console.log(err);
+    },
+  });
 //not done
   }
 
