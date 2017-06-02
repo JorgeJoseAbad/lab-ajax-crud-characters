@@ -1,13 +1,23 @@
 /*jshint esversion:6 */
+//APIHandler es una clase, tiene constructor al que se pasa una baseURL desde
+// su instanciador en index.js
+let urlCharacters; //defino variable globalmente accesible
+//y luego voy cambiando las referencias url.
 class APIHandler {
+
   constructor (baseUrl) {
     this.BASE_URL = baseUrl;
-
+    console.log(this.BASE_URL);
+    urlCharacters=this.BASE_URL+`/characters`;
+    console.log(urlCharacters);
   }
 
     getFullList (){
+      console.log(urlCharacters);
       $.ajax({
-        url: "https://ih-api.herokuapp.com/characters",
+
+        url: urlCharacters,
+        //url: "https://ih-api.herokuapp.com/characters",
         method: "GET",
         success: function (response) {
           console.log(response);
@@ -20,7 +30,8 @@ class APIHandler {
 
   getOneRegister (id) {
     $.ajax({
-      url: "https://ih-api.herokuapp.com/characters/"+id,
+      //url: "https://ih-api.herokuapp.com/characters/"+id,
+      url: urlCharacters+`/`+id,
       method: "GET",
       success: function (response) {
         console.log(response);
@@ -63,7 +74,8 @@ class APIHandler {
 
       $.ajax({
         type: 'POST',
-        url: 'https://ih-api.herokuapp.com/characters',
+        //url: 'https://ih-api.herokuapp.com/characters',
+        url:  urlCharacters,
         data: characterInfo,
         success: showFeedback,
         error: handleError
@@ -94,9 +106,9 @@ class APIHandler {
     },
     error: function (err) {
       console.log(err);
-    },
-  });
-//not done
+      },
+    });
+
   }
 
 

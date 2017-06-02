@@ -24,7 +24,7 @@ $(document).ready( () => {
 
   $('#edit-character-form').on('submit', (e) => {
     const id= $("input[name*='chr-id']").val();
-console.log(id);
+    console.log(id);
     charactersAPI.updateOneRegister (id);
 
   });
