@@ -17,7 +17,7 @@ class APIHandler {
       $.ajax({
 
         url: urlCharacters,
-        //url: "https://ih-api.herokuapp.com/characters",
+        //url: "https://ih-crud-api.herokuapp.com/characters",
         method: "GET",
         success: function (response) {
           console.log(response);
@@ -30,7 +30,7 @@ class APIHandler {
 
   getOneRegister (id) {
     $.ajax({
-      //url: "https://ih-api.herokuapp.com/characters/"+id,
+      //url: "https://ih-crud-api.herokuapp.com/characters/"+id,
       url: urlCharacters+`/`+id,
       method: "GET",
       success: function (response) {
@@ -74,7 +74,7 @@ class APIHandler {
 
       $.ajax({
         type: 'POST',
-        //url: 'https://ih-api.herokuapp.com/characters',
+        //url: 'https://ih-crud-api.herokuapp.com/characters',
         url:  urlCharacters,
         data: characterInfo,
         success: showFeedback,
@@ -98,7 +98,7 @@ class APIHandler {
     $.ajax({
       // Notice that we are using PATCH. You could also use PUT.
     type: 'PATCH',
-    url: `https://ih-api.herokuapp.com/characters/`+id,
+    url: `https://ih-crud-api.herokuapp.com/characters/${id}`,
     data: characterUptd,
     success: (patchResponse) => {
       console.log('Update SUCCESS!');
@@ -114,7 +114,7 @@ class APIHandler {
 
   deleteOneRegister (id) {
     $.ajax({
-      url: "https://ih-api.herokuapp.com/characters/"+id,
+      url: `https://ih-crud-api.herokuapp.com/characters/${id}`,
       method: "DELETE",
       success: function (response) {
         console.log(response);
