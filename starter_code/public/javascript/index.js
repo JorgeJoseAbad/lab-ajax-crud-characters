@@ -2,9 +2,15 @@
 const charactersAPI = new APIHandler("http://ih-crud-api.herokuapp.com");
 
 $(document).ready( () => {
+
+
   $('#fetch-all').on('click', (e) => {
         charactersAPI.getFullList();
+        console.log("globalresonse: ",globalResponse);
+        //test, globalResponse sale a consola antes de recibir respues
+        //ta del servidor via jquery/AYAX
   });
+
 
 
   $('#fetch-one').on('click', (e) => {

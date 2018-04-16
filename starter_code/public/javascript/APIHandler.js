@@ -3,6 +3,20 @@
 // su instanciador en index.js
 let urlCharacters; //defino variable globalmente accesible
 //y luego voy cambiando las referencias url.
+let globalResponse; //test
+
+//new function for test to change DOM after jquery GET
+function testResponse(newResponse){
+  console.log(newResponse);
+  if (newResponse[0]!==undefined){
+    document.getElementsByClassName('response')[0].innerHTML=newResponse[0].name;
+  }
+  else
+    document.getElementsByClassName('response')[0].innerHTML=newResponse.name;
+
+}
+
+
 class APIHandler {
 
   constructor (baseUrl) {
@@ -21,6 +35,8 @@ class APIHandler {
         method: "GET",
         success: function (response) {
           console.log(response);
+          globalResponse=response;//new test
+          testResponse(globalResponse);//new test
         },
         error: function (err) {
           console.log(err);
@@ -31,10 +47,12 @@ class APIHandler {
   getOneRegister (id) {
     $.ajax({
       //url: "https://ih-crud-api.herokuapp.com/characters/"+id,
-      url: urlCharacters+`/`+id,
+      //url: urlCharacters+`/`+id,
+      url:`${urlCharacters}/${id}`,
       method: "GET",
       success: function (response) {
         console.log(response);
+        testResponse(response); //new test
       },
       error: function (err) {
         console.log(err);
@@ -50,7 +68,8 @@ class APIHandler {
         console.log(postResponse);
         const newCharacterHtml = `
           <li>
-            <h3> ${postResponse.name} </h3>
+            <h3> New agent </h2>
+            <h4> ${postResponse.name} </h3>
             <p> Id: ${postResponse.id} </p>
           </li>
         `;

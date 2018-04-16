@@ -105,3 +105,10 @@ button {
 #send-data {
   margin: 10px 0 0 120px;
 }
+
+.response{
+  font-size: 24px;
+  height: 40px;
+  font-weight: bold;
+  color: red;
+}
